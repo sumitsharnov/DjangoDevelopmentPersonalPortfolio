@@ -1,3 +1,5 @@
+{{ job.summary }}
+
 <h1>All My Jobs & Education:</h1>
 
 
@@ -55,34 +57,16 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>Sumit Kumar</h1>
-      <p class="lead text-muted">Hi, my name is Sumit. I am Django Developer and learning new things everyday.</p>
-      <p>
-        <a href="mailto:sumitsharnov@gmail.com" class="btn btn-primary my-2">Email Me!!</a>
+      <h1>Job Detail</h1>
+      <p class="lead text-muted">{{ job.summary }}</p>
+      <img src = "{{ job.images.url }}" height="300">
+       <p>
+        <a href="{% url 'home' %}" class="btn btn-primary my-2">Back</a>
+        <a href="{% url 'detail' job.id job.id %}" class="btn btn-primary my-2">Next</a>
       </p>
-      <img src = "{% static 'sumit.jpg' %}" height="300">
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <a href = "{% url 'detail' job.id %}">
-              <div class="card mb-4 shadow-sm">
-                <img class="bd-placeholder-img card-img-top" src = "{{ job.images.url }}" height="300" width="1000" >
-                    <div class="card-body">
-                       <p class="card-text">{{ job.summary }}</p>
-                    </div>
-               </div>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
 
 </main>
 
